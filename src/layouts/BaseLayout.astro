@@ -1,0 +1,46 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeaderLink from '../components/HeaderLink.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+---
+
+<!doctype html>
+<html class="dark" lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<slot name="head" />
+	</head>
+	<body class="bg-background text-foreground font-sans antialiased min-h-screen">
+		<aside class="sidebar  text-foreground" data-side="right" data-initial-open="false" aria-hidden="true">
+			<nav aria-label="Mobile navigation">
+				<section class="scrollbar bg-surface">
+					<div role="group">
+					
+						<ul>
+							<li><HeaderLink href="/">Log</HeaderLink></li>
+							<li><HeaderLink href="/lab">Lab</HeaderLink></li>
+							<li><HeaderLink href="/blog">Archive</HeaderLink></li>
+							<li><HeaderLink href="/about">About</HeaderLink></li>
+						</ul>
+					</div>
+				</section>
+			</nav>
+		</aside>
+		<Header />
+		<slot />
+		<Footer />
+		<script>
+			import 'basecoat-css/basecoat';
+			import 'basecoat-css/sidebar';
+		</script>
+	</body>
+</html>

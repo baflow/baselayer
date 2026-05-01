@@ -1,141 +1,175 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@import "tailwindcss";
+@import "basecoat-css";
 
-:root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
-	--black: 15, 18, 25;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
-}
-body {
-	font-family: var(--font-atkinson);
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7;
-}
-main {
-	width: 720px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
-}
-h1 {
-	font-size: 3.052em;
-}
-h2 {
-	font-size: 2.441em;
-}
-h3 {
-	font-size: 1.953em;
-}
-h4 {
-	font-size: 1.563em;
-}
-h5 {
-	font-size: 1.25em;
-}
-strong,
-b {
-	font-weight: 700;
-}
-a {
-	color: var(--accent);
-}
-a:hover {
-	color: var(--accent);
-}
-p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
-}
-textarea {
-	width: 100%;
-	font-size: 16px;
-}
-input {
-	font-size: 16px;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
-}
-pre {
-	padding: 1.5em;
-	border-radius: 8px;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
-}
-hr {
-	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
-}
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	main {
-		padding: 1em;
-	}
+@theme inline {
+    /* Fonts: map Astro-loaded font variables into Tailwind font utilities */
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    --font-serif:
+        var(--font-newsreader), ui-serif, Georgia, Cambria, "Times New Roman",
+        Times, serif;
+    --font-display:
+        var(--font-newsreader), ui-serif, Georgia, Cambria, "Times New Roman",
+        Times, serif;
 }
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
+@theme {
+    /* ── Colors from DESIGN.md ───────────────────────────── */
+    --color-primary: #10b981;
+    --color-secondary: #8da696;
+    --color-tertiary: #418282;
+    --color-neutral: #142418;
+    --color-background: #0b0f0d;
+    --color-surface: #0b1e18;
+    --color-text-primary: #a1a1aa;
+    --color-text-secondary: #f4f4f5;
+    --color-border: #dce5df;
+    --color-accent: #10b981;
+    --color-white: #e1e3de;
+    --color-surface-card: #191c19;
+    --color-border-card: #1e211e;
+
+    /* ── Typography Scale — Minor Third (1.2), base = 15px ─── */
+    --text-xs: 0.694rem; /* ~11.1px */
+    --text-xs--line-height: 1.5;
+
+    --text-sm: 0.833rem; /* ~13.3px */
+    --text-sm--line-height: 1.5;
+
+    --text-base: 0.9375rem; /* 15px */
+    --text-base--line-height: 1.5;
+
+    --text-lg: 1.125rem; /* 18px */
+    --text-lg--line-height: 1.5;
+
+    --text-xl: 1.35rem; /* 21.6px */
+    --text-xl--line-height: 1.5;
+
+    --text-2xl: 1.62rem; /* 25.9px */
+    --text-2xl--line-height: 1.5;
+
+    --text-3xl: 1.944rem; /* 31.1px */
+    --text-3xl--line-height: 1.5;
+
+    --text-4xl: 2.333rem; /* 37.3px */
+    --text-4xl--line-height: 1.5;
+    --text-4xl--letter-spacing: -0.025em;
+
+    --text-5xl: 2.8rem; /* 44.8px */
+    --text-5xl--line-height: 1.5;
+
+    --text-6xl: 3.359rem; /* 53.7px */
+    --text-6xl--line-height: 1.5;
+
+    --text-7xl: 4.031rem; /* 64.5px */
+    --text-7xl--line-height: 1.5;
+
+    --text-8xl: 4.838rem; /* 77.4px */
+    --text-8xl--line-height: 1.5;
+
+    --text-9xl: 5.805rem; /* 92.9px */
+    --text-9xl--line-height: 1.5;
+
+    /* Custom tokens mapped from DESIGN.md */
+    --text-display-lg: 3rem; /* 48px — preserved from design spec */
+    --text-display-lg--line-height: 1;
+    --text-display-lg--letter-spacing: -0.025em;
+
+    --text-body-md: 0.9375rem; /* 15px — +1px from previous 14px */
+    --text-body-md--line-height: 1.625;
+
+    /* ── Font weight overrides ───────────────────────────── */
+    --font-weight-light: 300;
+
+    /* ── Spacing overrides (6px base) ────────────────────── */
+    --spacing: 6px;
+
+    /* ── Radius overrides (DESIGN 12 / 16 / 32) ──────────── */
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 32px;
+    --radius-xl: 32px;
+
+    /* ── Shadows from DESIGN.md ─────────────────────────── */
+    --shadow-surface:
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(255, 255, 255, 0.12) 0px 1px 0px 0px inset,
+        rgba(0, 0, 0, 0.5) 0px 15px 35px -5px;
+
+    --shadow-inset-depth:
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0.4) 0px 2px 15px 0px inset;
+
+    --shadow-hero:
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0.6) 0px 40px 80px -20px,
+        rgba(0, 0, 0, 0.8) 0px 0px 0px 1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset;
+
+    /* ── Letter spacing ──────────────────────────────────── */
+    --tracking-tight: -0.025em;
+
+    /* ── Easings ─────────────────────────────────────────── */
+    --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer components {
+    /* Fill-from-left hover effect */
+    .btn-fill {
+        z-index: 1;
+        position: relative;
+        overflow: hidden;
+        transition: all 300ms var(--ease-expo-out);
+    }
+    .btn-fill::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        border-radius: inherit;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 300ms var(--ease-expo-out);
+    }
+    .btn-fill:hover::before {
+        transform: scaleX(1);
+    }
+    .btn-fill-primary::before {
+        background-color: var(--color-primary);
+    }
+    .btn-fill-surface::before {
+        background-color: var(--color-surface);
+    }
+}
+
+@layer base {
+    body {
+        @apply font-sans;
+    }
+
+    nav a {
+        @apply font-display font-semibold text-xl;
+    }
+
+    h1 {
+        @apply font-display font-[350] text-text-secondary text-5xl leading-tight tracking-tight;
+    }
+
+    h2 {
+        @apply font-display font-light text-text-secondary text-3xl leading-snug tracking-normal;
+    }
+
+    h3 {
+        @apply font-display font-light text-text-secondary text-2xl leading-normal;
+    }
+
+    h4 {
+        @apply font-display font-light text-text-secondary text-xl leading-normal;
+    }
+
+    h5 {
+        @apply font-sans font-medium text-text-primary text-lg leading-snug;
+    }
+}
+.subtitles {
+    letter-spacing: 0.12em;
 }
