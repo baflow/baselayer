@@ -4,12 +4,13 @@ import mdx from '@astrojs/mdx';
 import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import expressiveCode from 'astro-expressive-code';
 import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://example.com',
-	integrations: [svelte(), mdx(), sitemap()],
+	integrations: [expressiveCode(), svelte(), mdx(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()],
 	},

@@ -1,35 +1,44 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import BaseLayout from './BaseLayout.astro';
+import ArticleMeta from '../components/ui/ArticleMeta.svelte';
+import ImageWithCaption from '../components/ui/ImageWithCaption.svelte';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	postId?: string;
+	postBody?: string;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, postId = 'unknown', postBody } = Astro.props;
+
+const wordCount = postBody ? postBody.split(/\s+/).filter(Boolean).length : 0;
+const readTime = `${Math.max(1, Math.ceil(wordCount / 200))} MIN READ`;
+const systemId = postId === 'unknown' ? 'SYSTEM.LOG.UNKNOWN' : `SYSTEM.LOG.${postId.toUpperCase().replace(/-/g, '_')}`;
 ---
 
 <BaseLayout title={title} description={description}>
-	<main>
-		<article>
-			<div class="hero-image">
-				{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-			</div>
+	<main class="mx-auto px-6 py-12 max-w-[900px]">
+		<article class="flex flex-col gap-10">
+			<!-- Article Header -->
+			<header class="flex flex-col gap-4">
+				<ArticleMeta label={systemId} date={pubDate} readTime={readTime} />
+				<h1 class="font-display text-display-lg text-text-secondary mt-2">{title}</h1>
+				<p class="font-sans text-lg text-text-primary/80 max-w-[80%] leading-relaxed">{description}</p>
+			</header>
+
+			<!-- Hero Image -->
+			{heroImage && (
+				<ImageWithCaption
+					src={heroImage.src}
+					alt={title}
+					caption={`Fig. 1.0 — ${title}`}
+					client:visible
+				/>
+			)}
+
+			<!-- Prose Content -->
 			<div class="prose">
-				<div class="title">
-					<div class="date">
-						<FormattedDate date={pubDate} />
-						{
-							updatedDate && (
-								<div class="last-updated-on">
-									Last updated on <FormattedDate date={updatedDate} />
-								</div>
-							)
-						}
-					</div>
-					<h1>{title}</h1>
-					<hr />
-				</div>
 				<slot />
 			</div>
 		</article>

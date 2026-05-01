@@ -173,3 +173,69 @@
 .subtitles {
     letter-spacing: 0.12em;
 }
+
+/* ── Prose content styles ─────────────────────────── */
+@layer base {
+    .prose {
+        @apply text-body-md text-text-primary/90 leading-relaxed;
+    }
+    .prose h2 {
+        @apply font-display font-light text-text-secondary text-3xl leading-snug tracking-normal mt-10 mb-4;
+    }
+    .prose h3 {
+        @apply font-display font-light text-text-secondary text-2xl leading-normal mt-8 mb-3;
+    }
+    .prose p {
+        @apply mb-4;
+    }
+    .prose ul {
+        @apply list-disc pl-6 mb-4;
+    }
+    .prose ol {
+        @apply list-decimal pl-6 mb-4;
+    }
+    .prose li {
+        @apply mb-1;
+    }
+    .prose a {
+        @apply text-primary underline underline-offset-2 hover:text-secondary transition-colors;
+    }
+    .prose code:not(pre code) {
+        @apply bg-surface-card px-1.5 py-0.5 rounded text-primary text-sm;
+    }
+    .prose blockquote {
+        @apply border-l-2 border-primary/40 pl-4 italic text-text-primary/70 my-6;
+    }
+    .prose hr {
+        @apply border-border/20 my-8;
+    }
+}
+
+/* ── Expressive Code overrides ───────────────────── */
+.expressive-code {
+    @apply my-6;
+}
+.expressive-code .frame {
+    @apply rounded-xl border border-border/20;
+}
+.expressive-code .frame .header {
+    @apply bg-surface-card border-b border-border/20;
+}
+.expressive-code .frame .title {
+    @apply text-text-primary/80 text-xs uppercase tracking-widest;
+}
+.expressive-code .frame .copy button {
+    @apply text-text-primary/60 hover:text-primary;
+}
+.expressive-code pre {
+    background-color: var(--color-surface) !important;
+}
+.expressive-code .frame.has-title:not(.is-terminal) .header::before {
+    @apply hidden;
+}
+.expressive-code .frame.is-terminal .header {
+    @apply bg-surface-card;
+}
+.expressive-code .frame.is-terminal .header::before {
+    @apply opacity-50;
+}
