@@ -9,8 +9,7 @@
 
 **[Live Demo](https://baselayer-pk4.pages.dev/)**
 
-<!-- TODO: Replace with your own screenshot. Recommended: 1280x800, placed in public/screenshot.jpg -->
-<!-- ![Screenshot](public/screenshot.jpg) -->
+![Screenshot](public/screenshot.jpg)
 
 ---
 
