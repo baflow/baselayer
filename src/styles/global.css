@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "basecoat-css";
+@plugin "fluid-tailwindcss" {
+  minviewport: 320;
+  maxviewport: 1440;
+  checkaccessibility: true;
+}
 
 @theme inline {
     /* Fonts: map Astro-loaded font variables into Tailwind font utilities */
@@ -120,36 +125,7 @@
        preferred = min + (max - min) * (100vw - 20rem) / (90rem - 20rem)
        Where 20rem = 320px, 90rem = 1440px. Edit those to change range.
     ───────────────────────────────────────────────────────────── */
-    --text-fluid-sm: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-    --text-fluid-sm--line-height: 1.5;
 
-    --text-fluid-base: clamp(0.875rem, 0.8125rem + 0.3125vw, 1rem);
-    --text-fluid-base--line-height: 1.5;
-
-    --text-fluid-lg: clamp(1.125rem, 1rem + 0.625vw, 1.35rem);
-    --text-fluid-lg--line-height: clamp(1.3, 1.95 - 0.04vw, 1.8);
-
-    --text-fluid-xl: clamp(1.35rem, 1.15rem + 1vw, 1.8rem);
-    --text-fluid-xl--line-height: 1.5;
-
-    --text-fluid-2xl: clamp(1.62rem, 1.3rem + 1.625vw, 2.5rem);
-    --text-fluid-2xl--line-height: 1.1;
-
-    --text-fluid-3xl: clamp(1.944rem, 1.5rem + 2.22vw, 3.5rem);
-    --text-fluid-3xl--line-height: 1.1;
-
-    --text-fluid-4xl: clamp(2.333rem, 1.6rem + 3.665vw, 4.5rem);
-    --text-fluid-4xl--line-height: 1;
-    --text-fluid-4xl--letter-spacing: -0.025em;
-
-    --text-fluid-5xl: clamp(2.8rem, 1.8rem + 5vw, 6rem);
-    --text-fluid-5xl--line-height: 1;
-    --text-fluid-5xl--letter-spacing: -0.025em;
-
-    /* ── Fluid Spacing — adjust min/max px targets ──────────── */
-    --spacing-gutter: clamp(1rem, 0.75rem + 1.25vw, 2.5rem);
-    --spacing-section: clamp(2.5rem, 1.5rem + 5vw, 8rem);
-    --spacing-page: clamp(1rem, 0.5rem + 2.5vw, 3rem);
 
     /* ── Easings ─────────────────────────────────────────── */
     --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
@@ -188,37 +164,30 @@
 @layer base {
     body {
         @apply font-sans;
-        font-size: var(--text-fluid-base);
     }
 
     nav a {
-        @apply font-display font-semibold;
-        font-size: var(--text-fluid-lg);
+        @apply font-display font-semibold text-lg;
     }
 
     h1 {
-        @apply font-[450] font-display text-text-secondary leading-tight;
-        font-size: var(--text-fluid-4xl);
+        @apply font-[450] font-display text-text-secondary leading-tight text-4xl;
     }
 
     h2 {
-        @apply font-display font-light text-text-secondary leading-snug tracking-normal;
-        font-size: var(--text-fluid-3xl);
+        @apply font-display font-light text-text-secondary leading-snug tracking-normal text-3xl;
     }
 
     h3 {
-        @apply font-display font-light text-text-secondary leading-normal;
-        font-size: var(--text-fluid-2xl);
+        @apply font-display font-light text-text-secondary leading-normal text-2xl;
     }
 
     h4 {
-        @apply font-display font-light text-text-secondary leading-normal;
-        font-size: var(--text-fluid-xl);
+        @apply font-display font-light text-text-secondary leading-normal text-xl;
     }
 
     h5 {
-        @apply font-sans font-medium text-text-primary leading-snug;
-        font-size: var(--text-fluid-lg);
+        @apply font-sans font-medium text-text-primary leading-snug text-lg;
     }
 }
 .subtitles {
@@ -228,7 +197,7 @@
 /* ── Prose content styles ─────────────────────────── */
 @layer base {
     .prose {
-        @apply font-[350] text-fluid-lg text-text-primary leading-6;
+        @apply font-[350] text-lg text-text-primary leading-6;
     }
     .prose h2 {
         @apply mt-10 mb-4 font-[420] font-display text-text-secondary text-3xl leading-snug tracking-normal;

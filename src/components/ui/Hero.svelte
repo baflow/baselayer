@@ -39,17 +39,17 @@
             >
                 {subtitle}
             </span>
-            <h1 class="mb-4 font-[350]" style="font-size:clamp(1.944rem, 2.7rem + 2.22vw, 3.5rem);line-height:clamp(1.05, 1.4 - 0.1vw, 1.2)">
+            <h1 class="mb-4 font-[350] fl-text-6xl/7xl">
                 {heading}
                 <span class="font-light italic">{headingItalic}</span>
                 and exploring
                 <span class="text-primary">{headingHighlight}</span>.
             </h1>
-            <div class="space-y-4 tracking-[0.013em]">
-                <p class="text-white/88 text-pretty leading-5" style="font-size: clamp(1.1rem, 0.9rem + 1vw, 1.8rem);line-height: clamp(1.3,1.45,1.4);">
+            <div class="space-y-4 fl-text-2xl/3xl tracking-[0.013em]">
+                <p class="text-white/88 text-pretty fl-leading-8.5/9" >
                     {description}
                 </p>
-                <p class="text-text-primary/80 tracking-wide" style="font-size: clamp(1rem, 1rem + 0.625vw, 1.26rem);line-height: 1.6;">
+                <p class="text-text-primary/80 fl-text-xl/2xl fl-leading-8/9.5 tracking-wide" >
                     {descriptionSecondary}
                 </p>
             </div>
