@@ -103,23 +103,7 @@ npm run dev
 6. **Configure Wrangler** (optional) in `wrangler.toml` and `.env`.
 7. **Update repo URL** in the deploy buttons above.
 
----
 
-## Design System
-
-All design tokens live in `DESIGN.md` and are wired into `src/styles/global.css` under `@theme`.
-
-| Token | Tailwind class |
-|-------|---------------|
-| Primary `#437652` | `text-primary`, `bg-primary` |
-| Secondary `#8DA696` | `text-secondary`, `bg-secondary` |
-| Neutral `#142418` | `text-neutral`, `bg-neutral` |
-| Display 48px / lh 1 | `text-display-lg` |
-| Body 15px / lh 1.625 | `text-body-md` |
-| Surface shadow | `shadow-surface` |
-| Inset depth | `shadow-inset-depth` |
-
-> Rule: if a token from `DESIGN.md` is missing in Tailwind, extend `@theme` in `global.css`. Never use arbitrary values like `w-[123px]`.
 
 ---
 
