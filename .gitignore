@@ -38,3 +38,8 @@ pi-session-*.html
 
 # backups
 *.bak
+
+# editor, ci & config folders
+.vscode/
+.github/
+.storybook/
