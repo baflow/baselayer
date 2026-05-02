@@ -25,20 +25,20 @@
 </script>
 
 <div
-  class="flex items-center justify-between font-sans text-primary uppercase tracking-widest border-b border-border/30 pb-2 {className}"
+  class="flex flex-col items-start md:items-center md:flex-row justify-between font-sans text-primary uppercase tracking-widest border-b-thin border-border/30 pb-2 {className}"
 >
   <div class="flex items-center gap-2">
     {#if variant === 'highlight'}
-      <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary"></span>
+      <span class="inline-block bg-primary rounded-full w-1.5 h-1.5"></span>
     {/if}
-    <span class="subtitles text-sm font-medium">{label}</span>
+    <span class="font-medium text-sm subtitles">{label}</span>
   </div>
   <div class="flex items-center gap-3 text-text-primary/60 text-xs">
     {#if fmtDate}
       <span>{fmtDate}</span>
     {/if}
     {#if fmtDate && readTime}
-      <span class="w-1 h-1 rounded-full bg-text-primary/40"></span>
+      <span class="rounded-full w-1 h-1 bg-text-primary/40"></span>
     {/if}
     {#if readTime}
       <span>{readTime}</span>

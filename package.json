@@ -1,7 +1,34 @@
 {
-  "name": "astro-dev-template",
+  "name": "baselayer",
   "type": "module",
   "version": "0.0.1",
+  "description": "Free Astro 6 starter with Tailwind v4, Basecoat UI, Svelte 5, Storybook, and Cloudflare Pages deploy.",
+  "license": "MIT",
+  "author": "",
+  "keywords": [
+    "astro",
+    "astro-template",
+    "astro-starter",
+    "astro-theme",
+    "tailwindcss",
+    "basecoat",
+    "svelte",
+    "storybook",
+    "cloudflare-pages",
+    "dark-mode",
+    "portfolio-template",
+    "blog-template",
+    "dashboard-template",
+    "static-site"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baflow/baselayer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baflow/baselayer/issues"
+  },
+  "homepage": "https://github.com/baflow/baselayer#readme",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -9,15 +36,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "astro build && wrangler pages deploy ./dist --project-name=baselayer",
+    "deploy:prod": "astro build && wrangler pages deploy ./dist --project-name=baselayer --branch=main",
     "astro": "astro",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.3.0",
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/svelte": "^7.2.5",
+    "@astrojs/svelte": "^8.1.0",
     "@tailwindcss/vite": "^4.2.4",
     "@types/three": "^0.184.0",
     "astro": "^6.2.1",
@@ -25,7 +55,8 @@
     "basecoat-css": "^0.3.11",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.2.4",
-    "three": "^0.184.0"
+    "three": "^0.184.0",
+    "wrangler": "^4.87.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.1.2",
@@ -35,5 +66,8 @@
     "@sveltejs/vite-plugin-svelte": "^4.0.4",
     "storybook": "^10.3.6",
     "svelte": "^5.55.5"
+  },
+  "overrides": {
+    "vite": "^7.3.2"
   }
 }

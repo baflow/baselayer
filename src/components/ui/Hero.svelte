@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
-    import Canvas3D from "./Canvas3D.svelte";
+    import AnimeGrid from "./AnimeGrid.svelte";
 
     interface Props {
         subtitle?: string;
@@ -16,12 +16,12 @@
     }
 
     let {
-        subtitle = "Personal Node",
-        heading = "Full-stack engineer building",
-        headingItalic = "efficent, secure systems",
-        headingHighlight = "digital aesthetics",
-        description = "Hi, I'm a developer specializing in systems architecture and minimalist UI engineering. This space serves as my personal laboratory and digital garden.",
-        descriptionSecondary = "Welcome to a repository of my modular research, technical documentation, and experiments in digital craft.",
+        subtitle = "Build log",
+        heading = "I ship",
+        headingItalic = "clean systems",
+        headingHighlight = "fast",
+        description = "Templates, components, and front-end experiments. I optimize for clarity — less boilerplate, more logic. This is my open workbench.",
+        descriptionSecondary = "Everything here is free to fork or steal. Check the lab for the latest builds.",
         labHref = "/lab",
         blogHref = "/blog",
         showCanvas = true,
@@ -39,29 +39,29 @@
             >
                 {subtitle}
             </span>
-            <h1 class="mb-4 font-[350] leading-9">
+            <h1 class="mb-4 font-[350]" style="font-size:clamp(1.944rem, 1.77rem + 2.22vw, 3.5rem);">
                 {heading}
                 <span class="font-light italic">{headingItalic}</span>
                 and exploring
                 <span class="text-primary">{headingHighlight}</span>.
             </h1>
             <div class="space-y-4 tracking-[0.013em]">
-                <p class="text-text-primary text-xl text-pretty leading-5">
+                <p class="text-white/88 text-pretty leading-5" style="font-size: clamp(1.1rem, 0.9rem + 1vw, 1.8rem);line-height: clamp(1.3,1.45,1.4);">
                     {description}
                 </p>
-                <p class="text-text-primary/80 tracking-wide">
+                <p class="text-text-primary/80 tracking-wide" style="font-size: clamp(1rem, 1rem + 0.625vw, 1.1rem);line-height: 1.6;">
                     {descriptionSecondary}
                 </p>
             </div>
             <div class="flex gap-2 mt-8">
                 <a
                     href={labHref}
-                    class="inline-flex items-center gap-1 btn-fill-primary px-4 py-2 border border-accent rounded-lg font-semibold hover:font-extrabold text-primary hover:text-emerald-950 text-base uppercase tracking-widest btn-fill btn-fill"
+                    class="group inline-flex items-center gap-1 btn-fill-primary px-4 py-2 border-bold border-primary rounded-lg font-semibold hover:font-extrabold text-primary hover:text-emerald-950 text-base uppercase tracking-widest btn-fill btn-fill"
                 >
                     View Lab
-                    <span>
+                    <span class="group">
                         <svg
-                            class="fill-emerald-200 size-4"
+                            class="fill-primary group-hover:fill-white size-4"
                             xmlns="http://www.w3.org/2000/svg"
                             width="32"
                             height="32"
@@ -75,17 +75,17 @@
                 </a>
                 <a
                     href={blogHref}
-                    class="block z-10 btn-fill-surface px-4 py-2 border border-transparent rounded-lg font-medium text-text-primary hover:text-white text-base uppercase tracking-widest btn-fill btn-fill"
+                    class="block z-10 btn-fill-surface px-4 py-2 border-thin border-transparent rounded-lg font-medium text-text-primary hover:text-white text-base uppercase tracking-widest btn-fill btn-fill"
                 >
                     Read Log
                 </a>
             </div>
         </div>
 
-        <!-- Right: Three.js canvas -->
+        <!-- Right: animated grid column -->
         {#if showCanvas}
             <div class="hidden lg:block">
-                <Canvas3D />
+                <AnimeGrid />
             </div>
         {/if}
     </div>

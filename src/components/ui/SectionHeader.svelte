@@ -14,6 +14,6 @@
         {title}
     </span>
     <div
-        class="flex-1 bg-border/30 h-[2px] group-hover/section:bg-primary/60 transition-colors duration-300"
+        class="flex-1 border-t-bold border-border/30 group-hover/section:border-primary/60 transition-colors duration-300"
     ></div>
 </div>

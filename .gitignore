@@ -26,5 +26,15 @@ pnpm-debug.log*
 
 .plans/
 
-.storybook/
+# storybook output
+storybook-static/
+
+# local caches
 .dirac-symbol-index/
+.wrangler/
+
+# session artifacts
+pi-session-*.html
+
+# backups
+*.bak

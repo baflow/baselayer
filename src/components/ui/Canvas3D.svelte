@@ -11,7 +11,7 @@
     // ── Scene & orthographic iso camera ────────────────────────
     const scene = new THREE.Scene();
 
-    const frustumSize = 5;
+    const frustumSize = 8;
     const aspect = canvasEl.clientWidth / canvasEl.clientHeight;
     const camera = new THREE.OrthographicCamera(
       -frustumSize * aspect / 2,
@@ -72,10 +72,17 @@
     const lineSpacing = 0.28;
     const lineHalfLen = 3.0;
 
-    const positions: number[] = [];
-    const targets: number[] = [];
-    const aLineIdx: number[] = [];
-    const aPlaneIdx: number[] = [];
+    interface LineData {
+      start: THREE.Vector3;
+      end: THREE.Vector3;
+      targetStart: THREE.Vector3;
+      targetEnd: THREE.Vector3;
+      pivot: THREE.Vector3;
+      idx: number;
+      plane: number;
+    }
+
+    const lines: LineData[] = [];
 
     let lineIdx = 0;
 
@@ -85,41 +92,61 @@
       // Horizontal grid lines (constant y)
       for (let i = 0; i <= divisions; i++) {
         const y = -half + i * step;
-        // Start: grid position
-        positions.push(-half, y, zOff, half, y, zOff);
+        const start0 = new THREE.Vector3(-half, y, zOff);
+        const start1 = new THREE.Vector3(half, y, zOff);
 
-        // End: diagonal line in screen-aligned space
         const d = (lineIdx - (totalLines - 1) / 2) * lineSpacing;
         const center = perpDir.clone().multiplyScalar(d);
-        const startPt = center.clone().addScaledVector(lineDir, -lineHalfLen);
-        const endPt = center.clone().addScaledVector(lineDir, lineHalfLen);
-        targets.push(startPt.x, startPt.y, startPt.z, endPt.x, endPt.y, endPt.z);
+        const target0 = center.clone().addScaledVector(lineDir, -lineHalfLen);
+        const target1 = center.clone().addScaledVector(lineDir, lineHalfLen);
 
-        aLineIdx.push(lineIdx, lineIdx);
-        aPlaneIdx.push(p, p);
+        const startCenter = new THREE.Vector3().addVectors(start0, start1).multiplyScalar(0.5);
+        const pivot = new THREE.Vector3().addVectors(startCenter, center).multiplyScalar(0.5);
+
+        lines.push({ start: start0, end: start1, targetStart: target0, targetEnd: target1, pivot, idx: lineIdx, plane: p });
         lineIdx++;
       }
 
       // Vertical grid lines (constant x)
       for (let i = 0; i <= divisions; i++) {
         const x = -half + i * step;
-        positions.push(x, -half, zOff, x, half, zOff);
+        const start0 = new THREE.Vector3(x, -half, zOff);
+        const start1 = new THREE.Vector3(x, half, zOff);
 
         const d = (lineIdx - (totalLines - 1) / 2) * lineSpacing;
         const center = perpDir.clone().multiplyScalar(d);
-        const startPt = center.clone().addScaledVector(lineDir, -lineHalfLen);
-        const endPt = center.clone().addScaledVector(lineDir, lineHalfLen);
-        targets.push(startPt.x, startPt.y, startPt.z, endPt.x, endPt.y, endPt.z);
+        const target0 = center.clone().addScaledVector(lineDir, -lineHalfLen);
+        const target1 = center.clone().addScaledVector(lineDir, lineHalfLen);
 
-        aLineIdx.push(lineIdx, lineIdx);
-        aPlaneIdx.push(p, p);
+        const startCenter = new THREE.Vector3().addVectors(start0, start1).multiplyScalar(0.5);
+        const pivot = new THREE.Vector3().addVectors(startCenter, center).multiplyScalar(0.5);
+
+        lines.push({ start: start0, end: start1, targetStart: target0, targetEnd: target1, pivot, idx: lineIdx, plane: p });
         lineIdx++;
       }
+    }
+
+    const positions: number[] = [];
+    const targets: number[] = [];
+    const pivots: number[] = [];
+    const aLineIdx: number[] = [];
+    const aPlaneIdx: number[] = [];
+
+    for (const line of lines) {
+      positions.push(line.start.x, line.start.y, line.start.z);
+      positions.push(line.end.x, line.end.y, line.end.z);
+      targets.push(line.targetStart.x, line.targetStart.y, line.targetStart.z);
+      targets.push(line.targetEnd.x, line.targetEnd.y, line.targetEnd.z);
+      pivots.push(line.pivot.x, line.pivot.y, line.pivot.z);
+      pivots.push(line.pivot.x, line.pivot.y, line.pivot.z);
+      aLineIdx.push(line.idx, line.idx);
+      aPlaneIdx.push(line.plane, line.plane);
     }
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('aTarget', new THREE.Float32BufferAttribute(targets, 3));
+    geometry.setAttribute('aPivot', new THREE.Float32BufferAttribute(pivots, 3));
     geometry.setAttribute('aLineIdx', new THREE.Float32BufferAttribute(aLineIdx, 1));
     geometry.setAttribute('aPlaneIdx', new THREE.Float32BufferAttribute(aPlaneIdx, 1));
 
@@ -128,6 +155,7 @@
       uniform float uProgress;
       uniform vec2 uMouse;
       attribute vec3 aTarget;
+      attribute vec3 aPivot;
       attribute float aLineIdx;
       attribute float aPlaneIdx;
 
@@ -146,7 +174,13 @@
         // Smoothstep easing
         t = t * t * (3.0 - 2.0 * t);
 
-        vec3 pos = mix(startPos, endPos, t);
+        // Phase 1: collapse to pivot, Phase 2: expand from pivot to target
+        vec3 pos;
+        if (t < 0.5) {
+          pos = mix(startPos, aPivot, t * 2.0);
+        } else {
+          pos = mix(aPivot, endPos, (t - 0.5) * 2.0);
+        }
 
         // Subtle pointer-reactive rotation
         float rz = uMouse.x * 0.12;
@@ -194,8 +228,8 @@
       depthWrite: false,
     });
 
-    const lines = new THREE.LineSegments(geometry, material);
-    scene.add(lines);
+    const lineSegments = new THREE.LineSegments(geometry, material);
+    scene.add(lineSegments);
 
     // ── Pointer drift ──────────────────────────────────────────
     let mx = 0, my = 0;

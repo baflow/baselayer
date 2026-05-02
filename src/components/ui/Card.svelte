@@ -22,17 +22,17 @@
 
 <a
     {href}
-    class="block group bg-surface-card border-2 border-border-card rounded-md cursor-pointer transition-all duration-300 hover:border-primary/40 hover:shadow-surface overflow-hidden {className}"
+    class="block group bg-surface-card border-default border-border-card rounded-md cursor-pointer transition-all duration-300 hover:border-primary/40 hover:shadow-surface overflow-hidden {className}"
 >
     {#if image}
-        <div class="aspect-video overflow-hidden relative">
+        <div class="relative aspect-video overflow-hidden">
             <img
                 src={image}
                 alt={title}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div
-                class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface-card to-transparent pointer-events-none"
+                class="bottom-0 absolute inset-x-0 bg-gradient-to-t from-surface-card to-transparent h-1/2 pointer-events-none"
             ></div>
         </div>
     {/if}
@@ -41,7 +41,7 @@
         <div class="flex justify-between items-start mb-2">
             {#if date}
                 <span
-                    class="font-sans text-text-primary/60 text-sm uppercase tracking-widest"
+                    class="font-[625] font-sans text-neutral-500 text-sm uppercase tracking-widest"
                 >
                     {date}
                 </span>
@@ -76,7 +76,7 @@
             <div class="flex flex-wrap gap-2 mt-1">
                 {#each tags as tag}
                     <span
-                        class="inline-flex items-center bg-surface px-2 py-0.5 border border-border/30 rounded-sm font-medium text-[10px] text-text-primary/60 uppercase tracking-widest"
+                        class="inline-flex items-center bg-surface px-2 py-0.5 border-thin border-primary/40 rounded-sm font-medium text-[10px] text-primary uppercase tracking-widest"
                     >
                         {tag}
                     </span>

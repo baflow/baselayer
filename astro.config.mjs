@@ -9,7 +9,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	site: 'https://baselayer-pk4.pages.dev',
 	integrations: [expressiveCode(), svelte(), mdx(), sitemap()],
 	vite: {
 		plugins: [tailwindcss()],

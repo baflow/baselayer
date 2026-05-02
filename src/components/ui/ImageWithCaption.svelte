@@ -11,30 +11,30 @@
 
 <figure class="w-full {className}">
   <div
-    class="p-[6px] rounded-[18px] bg-gradient-to-b from-white/[0.08] to-white/[0.01] border border-border/20 relative group"
+    class="group relative"
   >
     <!-- ambient glow on hover -->
     <div
-      class="absolute inset-0 bg-tertiary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-[18px]"
+      class="absolute inset-0 bg-tertiary/10 opacity-0 group-hover:opacity-100 blur-xl rounded-[18px] transition-opacity duration-1000"
     ></div>
 
-    <div class="rounded-xl overflow-hidden bg-surface relative z-10 border border-white/5">
+    <div class="z-10 relative bg-surface border-thin border-white/5 rounded-xl overflow-hidden">
       <img
         {src}
         {alt}
-        class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-700"
+        class="opacity-90 hover:opacity-100 w-full h-auto object-cover transition-opacity duration-700"
         loading="lazy"
       />
     </div>
 
     <!-- decorative corners -->
-    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary/50 z-20 m-3"></div>
-    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/50 z-20 m-3"></div>
-    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/50 z-20 m-3"></div>
-    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/50 z-20 m-3"></div>
+    <div class="top-0 left-0 z-20 absolute m-3 border-primary/50 border-t-thin border-l-thin w-2 h-2"></div>
+    <div class="top-0 right-0 z-20 absolute m-3 border-primary/50 border-t-thin border-r-thin w-2 h-2"></div>
+    <div class="bottom-0 left-0 z-20 absolute m-3 border-primary/50 border-b-thin border-l-thin w-2 h-2"></div>
+    <div class="right-0 bottom-0 z-20 absolute m-3 border-primary/50 border-r-thin border-b-thin w-2 h-2"></div>
   </div>
   {#if caption}
-    <figcaption class="font-sans text-xs uppercase tracking-widest text-text-primary/60 text-center mt-4">
+    <figcaption class="mt-4 font-sans text-text-primary/60 text-xs text-center uppercase tracking-widest">
       {caption}
     </figcaption>
   {/if}
