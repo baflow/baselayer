@@ -127,7 +127,7 @@
     --text-fluid-base--line-height: 1.5;
 
     --text-fluid-lg: clamp(1.125rem, 1rem + 0.625vw, 1.35rem);
-    --text-fluid-lg--line-height: clamp(1.35,1.5,1.5);
+    --text-fluid-lg--line-height: clamp(1.3, 1.95 - 0.04vw, 1.8);
 
     --text-fluid-xl: clamp(1.35rem, 1.15rem + 1vw, 1.8rem);
     --text-fluid-xl--line-height: 1.5;
@@ -173,7 +173,8 @@
         transform-origin: left;
         transition: transform 300ms var(--ease-expo-out);
     }
-    .btn-fill:hover::before {
+    .btn-fill:hover::before,
+    .btn-fill:active::before {
         transform: scaleX(1);
     }
     .btn-fill-primary::before {

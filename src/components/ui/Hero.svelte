@@ -39,7 +39,7 @@
             >
                 {subtitle}
             </span>
-            <h1 class="mb-4 font-[350]" style="font-size:clamp(1.944rem, 1.77rem + 2.22vw, 3.5rem);">
+            <h1 class="mb-4 font-[350]" style="font-size:clamp(1.944rem, 2.7rem + 2.22vw, 3.5rem);line-height:clamp(1.05, 1.4 - 0.1vw, 1.2)">
                 {heading}
                 <span class="font-light italic">{headingItalic}</span>
                 and exploring
@@ -49,14 +49,14 @@
                 <p class="text-white/88 text-pretty leading-5" style="font-size: clamp(1.1rem, 0.9rem + 1vw, 1.8rem);line-height: clamp(1.3,1.45,1.4);">
                     {description}
                 </p>
-                <p class="text-text-primary/80 tracking-wide" style="font-size: clamp(1rem, 1rem + 0.625vw, 1.1rem);line-height: 1.6;">
+                <p class="text-text-primary/80 tracking-wide" style="font-size: clamp(1rem, 1rem + 0.625vw, 1.26rem);line-height: 1.6;">
                     {descriptionSecondary}
                 </p>
             </div>
             <div class="flex gap-2 mt-8">
                 <a
                     href={labHref}
-                    class="group inline-flex items-center gap-1 btn-fill-primary px-4 py-2 border-bold border-primary rounded-lg font-semibold hover:font-extrabold text-primary hover:text-emerald-950 text-base uppercase tracking-widest btn-fill btn-fill"
+                    class="group inline-flex items-center gap-1 btn-fill-primary px-4 py-2 border-bold border-primary rounded-lg font-semibold hover:font-extrabold text-primary hover:text-emerald-950 active:text-emerald-950 text-base uppercase tracking-widest btn-fill"
                 >
                     View Lab
                     <span class="group">
