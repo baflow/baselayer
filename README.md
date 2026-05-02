@@ -5,7 +5,7 @@
 [![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte)](https://svelte.dev)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-> A free, design-token-driven Astro 6 starter for dark-mode dashboards, blogs, and product showcases. Ships with **Basecoat UI**, **Storybook**, **Svelte 5**, **Three.js accents**, and **Cloudflare Pages** deploy.
+> A free, design-token-driven Astro 6 starter for dark-mode dashboards, blogs, and product showcases. Ships with **Basecoat UI**, **Svelte 5**, and **Cloudflare Pages** deploy.
 
 **[Live Demo](https://baselayer-pk4.pages.dev/)**
 
@@ -44,7 +44,6 @@ npm run dev
 | Components | [Svelte 5](https://svelte.dev) |
 | Icons | Solar (linear) |
 | Fonts | Inter + Newsreader (loaded via Astro Fonts) |
-| 3D Accents | Three.js |
 | Deployment | Cloudflare Pages (via Wrangler) |
 
 ---
@@ -54,10 +53,8 @@ npm run dev
 - **Content Collections** with typed frontmatter for blog posts and projects
 - **Design-token-driven** Tailwind theme mapped 1:1 from `DESIGN.md`
 - **Basecoat UI** components (`btn`, `card`, `badge`, `tabs`, etc.) -- no React needed
-- **Storybook** with Svelte CSF for isolated component development
 - **Expressive Code** for beautiful fenced code blocks
 - **RSS, Sitemap, Open Graph** out of the box
-- **WebGL accents** via Three.js (optional, degrades gracefully)
 - **Cloudflare-ready** with `wrangler.toml` included
 
 ---
@@ -69,12 +66,11 @@ npm run dev
 ├── src/
 │   ├── assets/           # Images processed by Astro
 │   ├── components/       # Astro + Svelte UI components
-│   │   └── ui/           # Reusable Svelte components (Storybook-ready)
+│   │   └── ui/           # Reusable Svelte components 
 │   ├── content/          # Markdown/MDX collections
 │   ├── layouts/          # Page layouts
 │   ├── pages/            # File-based routes
 │   └── styles/           # Tailwind theme + Basecoat imports
-├── .storybook/           # Storybook config
 ├── DESIGN.md             # Design system spec
 ├── astro.config.mjs
 ├── wrangler.toml
@@ -91,8 +87,6 @@ npm run dev
 | `npm run build` | Build production site to `./dist/` |
 | `npm run preview` | Preview production build locally |
 | `npm run deploy` | Deploy to Cloudflare Pages |
-| `npm run storybook` | Start Storybook at `localhost:6006` |
-| `npm run build-storybook` | Build static Storybook |
 
 ---
 
