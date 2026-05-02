@@ -38,6 +38,7 @@ npm run preview  # preview production build
 - Custom CSS: keep inside `global.css`; never write custom CSS in component `<style>` blocks.
 - Naming: `PascalCase` for components, `kebab-case` for files.
 - Images: always use `astro:assets` `<Image />` instead of `<img>`.
+- Units: **Always use relative units** (`rem`, `em`, `%`, `vw`/`vh`) for sizing, spacing, typography, and layout. **Never use `px`** in CSS, Tailwind config, or `@theme` definitions — convert to `rem` (base 16px: e.g. 12px → 0.75rem, 14px → 0.875rem, 16px → 1rem, 24px → 1.5rem, 32px → 2rem, 48px → 3rem). This ensures proper scaling with user font-size preferences and accessibility.
 
 ## Tailwind / Design Tokens
 All design tokens live in `DESIGN.md` and are wired into Tailwind via `src/styles/global.css` under `@theme`:
@@ -119,6 +120,8 @@ Alternatively copy scripts to `public/js/` and load from there.
 - Ensure Basecoat theme variables align with DESIGN.md palette.
 
 ## Anti-patterns
+- **NEVER** use `px` units — always use `rem` (or `em`/`%` where appropriate). Convert any `px` value to `rem` (÷16). Example: `12px` → `0.75rem`, `6px` → `0.375rem`.
+
 - **NEVER** use arbitrary Tailwind values (`w-[123px]`, `text-[22px]`) — extend `@theme` or use existing tokens.
 - **NEVER** write `<style>` blocks in Astro components — everything goes through Tailwind/Basecoat.
 - **NEVER** skip `npm run build` before finishing.
