@@ -6,5 +6,5 @@ export const SITE_DESCRIPTION = 'Free Astro 6 starter with Svelte 5, Tailwind v4
 
 export const CONTACT = {
 	github: 'https://github.com/user-name',
-	email: 'mailto:your@email.com',
+	email: 'mailto:greg@unityservice.ovh',
 } as const;
