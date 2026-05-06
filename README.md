@@ -132,6 +132,7 @@ The `cf-worker/` folder contains a Cloudflare Worker that acts as a secure email
 | `SENDER_DOMAIN` | Variable | `wrangler.toml` (`[vars]`) | Allowed sender domain (e.g. `unityservice.ovh`) |
 | `RATE_LIMIT_MAX` | Variable | `wrangler.toml` (`[vars]`) | Max requests per IP (default `2`, set `0` to disable) |
 | `RATE_LIMIT_WINDOW_MINUTES` | Variable | `wrangler.toml` (`[vars]`) | Sliding window in minutes (default `15`) |
+| `EMAIL_ENABLED` | Variable | `wrangler.toml` (`[vars]`) | Set `false` to completely disable the `/send` endpoint (returns `503`) |
 
 ### Setup steps
 

@@ -9,6 +9,7 @@ export interface Env {
   TURNSTILE_SECRET: string;
   RATE_LIMIT_MAX?: string;
   RATE_LIMIT_WINDOW_MINUTES?: string;
+  EMAIL_ENABLED?: string;
 }
 
 async function verifyTurnstile(
@@ -39,6 +40,14 @@ export default {
     env: Env,
     ctx: ExecutionContext
   ): Promise<Response> {
+    // Feature toggle: disable email endpoint entirely
+    if (env.EMAIL_ENABLED === "false") {
+      return jsonResponse(
+        { ok: false, error: "Email endpoint is currently disabled." },
+        503
+      );
+    }
+
     const cors = handleCors(request);
     if (cors) return cors;
 

@@ -4,6 +4,7 @@ compatibility_date = "2026-05-05"
 
 [vars]
 SENDER_DOMAIN = "unityservice.ovh"
+EMAIL_ENABLED = "false"
 
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
