@@ -9,7 +9,7 @@
 
 **[Live Demo](https://baselayer-pk4.pages.dev/)**
 
-![Screenshot](public/screenshot.jpg)
+![Baselayer Thumbnail](public/thumbnail.png)
 
 ---
 
@@ -99,7 +99,7 @@ npm run dev
 2. **Update placeholders** in `src/consts.ts` (title, description, contact links).
 3. **Replace the footer** text in `src/components/Footer.astro`.
 4. **Add your own content** to `src/content/blog/` and `src/content/projects/`.
-5. **Replace screenshot** -- add `public/screenshot.jpg` and uncomment it in this README.
+5. **Replace thumbnail** — add `public/thumbnail.png` (1200x630 recommended).
 6. **Configure Wrangler** (optional) in `wrangler.toml` and `.env`.
 7. **Update repo URL** in the deploy buttons above.
 
