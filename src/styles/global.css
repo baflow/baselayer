@@ -170,26 +170,37 @@
         @apply font-display font-semibold text-lg;
     }
 
-    h1 {
-        @apply font-[450] font-display text-text-secondary leading-tight text-4xl;
+    h1, .fs-h1 {
+        @apply font-[450] font-display text-text-secondary leading-tight;
+        font-size: clamp(2.8125rem, 2.6527rem + 0.6392vi, 3.1641rem);
     }
 
-    h2 {
-        @apply font-display font-light text-text-secondary leading-snug tracking-normal text-3xl;
+    h2, .fs-h2 {
+        @apply font-display font-light text-text-secondary leading-snug tracking-normal;
+        font-size: clamp(2.1094rem, 1.9895rem + 0.4794vi, 2.373rem);
     }
 
-    h3 {
-        @apply font-display font-light text-text-secondary leading-normal text-2xl;
+    h3, .fs-h3 {
+        @apply font-display font-light text-text-secondary leading-normal;
+        font-size: clamp(1.7578rem, 1.6579rem + 0.3995vi, 1.9775rem);
     }
 
-    h4 {
-        @apply font-display font-light text-text-secondary leading-normal text-xl;
+    h4, .fs-h4 {
+        @apply font-display font-light text-text-secondary leading-normal;
+        font-size: clamp(1.4063rem, 1.3263rem + 0.3196vi, 1.582rem);
     }
 
-    h5 {
-        @apply font-sans font-medium text-text-primary leading-snug text-lg;
+    h5, .fs-h5 {
+        @apply font-sans font-medium text-text-primary leading-snug;
+        font-size: clamp(1.1719rem, 1.1053rem + 0.2663vi, 1.3184rem);
+    }
+
+    h6, .fs-h6 {
+        @apply font-sans font-medium text-text-primary leading-snug;
+        font-size: clamp(1.0547rem, 0.9948rem + 0.2397vi, 1.1865rem);
     }
 }
+
 .subtitles {
     letter-spacing: 0.12em;
 }
@@ -197,13 +208,15 @@
 /* ── Prose content styles ─────────────────────────── */
 @layer base {
     .prose {
-        @apply font-[350] text-lg text-text-primary leading-6;
+        @apply font-[350] text-text-primary text-lg leading-6;
     }
     .prose h2 {
-        @apply mt-10 mb-4 font-[420] font-display text-text-secondary text-3xl leading-snug tracking-normal;
+        @apply mt-10 mb-4 font-[420] font-display text-text-secondary leading-snug tracking-normal;
+        font-size: clamp(2.1094rem, 1.9895rem + 0.4794vi, 2.373rem);
     }
     .prose h3 {
-        @apply mt-8 mb-3 font-[350] font-display text-text-secondary text-2xl leading-normal;
+        @apply mt-8 mb-3 font-[350] font-display text-text-secondary leading-normal;
+        font-size: clamp(1.7578rem, 1.6579rem + 0.3995vi, 1.9775rem);
     }
     .prose p {
         @apply mb-4;
