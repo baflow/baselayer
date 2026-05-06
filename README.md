@@ -182,6 +182,8 @@ The `cf-worker/` folder contains a Cloudflare Worker that acts as a secure email
 
 Rate limiting is IP-based and implemented as a **sliding window** in Cloudflare KV. Two optional variables control its behaviour:
 
+> **Tip:** To disable rate limiting completely, set `RATE_LIMIT_MAX = "0"` in `wrangler.toml`. The worker will skip all rate-limit checks and allow unlimited requests.
+
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `RATE_LIMIT_MAX` | `2` | Max requests allowed per IP within the window. Set to `0` to **disable** rate limiting entirely. |
