@@ -1,0 +1,10 @@
+name = "email-cloudflare-resend"
+main = "src/index.ts"
+compatibility_date = "2026-05-05"
+
+[vars]
+SENDER_DOMAIN = "unityservice.ovh"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "22178c3d97b2417695af7f945b0e27d6"
