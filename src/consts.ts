@@ -5,6 +5,6 @@ export const SITE_TITLE = 'Baselayer';
 export const SITE_DESCRIPTION = 'Free Astro 6 starter with Svelte 5, Tailwind v4, Basecoat UI, and built-in dark mode. Deploy-ready for Cloudflare Pages.';
 
 export const CONTACT = {
-	github: 'https://github.com/user-name',
+	github: 'https://github.com/baflow/baselayer',
 	email: 'mailto:greg@unityservice.ovh',
 } as const;
