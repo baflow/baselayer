@@ -5,7 +5,7 @@
 [![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00?logo=svelte)](https://svelte.dev)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-> A free, design-token-driven Astro 6 starter for dark-mode dashboards, blogs, and product showcases. Ships with **Basecoat UI**, **Svelte 5**, and **Cloudflare Pages** deploy.
+> A free, design-token-driven Astro 6 starter for dark-mode blogs and product showcases.
 
 **[Live Demo](https://baselayer-pk4.pages.dev/)**
 
@@ -36,26 +36,18 @@ npm run dev
 
 ## Stack
 
-| Layer | Tech |
-|-------|------|
-| Framework | [Astro 6](https://astro.build) (static output) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com) |
-| UI Kit | [Basecoat CSS](https://basecoat-css.com) |
-| Components | [Svelte 5](https://svelte.dev) |
-| Icons | Solar (linear) |
-| Fonts | Inter + Newsreader (loaded via Astro Fonts) |
-| Deployment | Cloudflare Pages (via Wrangler) |
+Built with **Astro 6**, **Tailwind CSS v4**, **Basecoat CSS**, **Svelte 5**, Solar icons, and Inter + Newsreader fonts. Deploys to Cloudflare Pages.
 
 ---
 
 ## Features
 
 - **Content Collections** with typed frontmatter for blog posts and projects
-- **Design-token-driven** Tailwind theme mapped 1:1 from `DESIGN.md`
-- **Basecoat UI** components (`btn`, `card`, `badge`, `tabs`, etc.) -- no React needed
+- **Design-token-driven** Tailwind theme — tweak colors, typography, and spacing through a single source of truth
+- **Basecoat UI** — debloated components, no React needed
 - **Expressive Code** for beautiful fenced code blocks
-- **RSS, Sitemap, Open Graph** out of the box
-- **Cloudflare-ready** with `wrangler.toml` included
+- **RSS, Sitemap, Open Graph** out of the box, thanks to Astro
+- **Optional contact form** — Cloudflare Workers + Resend API
 
 ---
 
@@ -80,20 +72,6 @@ npm run dev
 ├── wrangler.toml
 └── README.md
 ```
-
----
-
-## Scripts
-
-| Command | Action |
-|---------|--------|
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run deploy` | Deploy to Cloudflare Pages |
-| `npm run email:dev` | Start the email worker dev server (submodule) |
-| `npm run email:deploy` | Deploy the email worker (submodule) |
-| `npm run email:test` | Run email worker tests (submodule) |
 
 ---
 
@@ -128,34 +106,11 @@ git submodule update --init
 
 The submodule points to [`email-cloudflare-resend`](https://github.com/baflow/email-cloudflare-resend) — a standalone Cloudflare Worker that acts as a secure email proxy (Turnstile, rate limiting, Resend relay). It is **deployed separately** from the Astro site. The frontend talks to it via `EMAIL_WORKER_URL`.
 
-### Updating the submodule
-
-```bash
-# Pull latest changes inside the submodule
-cd integrations/email-cloudflare-resend
-git fetch origin
-git checkout v1.0.0   # or latest tag
-cd ../..
-git add integrations/email-cloudflare-resend
-git commit -m "chore: bump email-worker to v1.0.0"
-```
-
 ---
 
 ## Email Worker (submodule)
 
-The worker lives in `integrations/email-cloudflare-resend/` (git submodule). It validates contact-form submissions from the static Astro site and relays them through **Resend**.
-
-### What it does
-
-| Step | Protection |
-|------|------------|
-| CORS | Origin-matching headers (configurable via `ALLOWED_ORIGINS`) |
-| Honeypot | Rejects requests with a filled `website` field (fake success so bots learn nothing) |
-| Turnstile | Verifies Cloudflare Turnstile anti-spam token |
-| Rate limit | Sliding-window IP limit in Cloudflare KV (disable with `RATE_LIMIT_MAX=0`) |
-| Domain lock | Forces `From:` address to end in `SENDER_DOMAIN` |
-| Resend relay | Sends the email via Resend API |
+The worker lives in `integrations/email-cloudflare-resend/` (git submodule). It validates contact-form submissions from the static Astro site and relays them in a secure way through **Resend**.
 
 ### Required secrets & variables (inside submodule)
 
