@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { workerUrl, recipientEmail = 'hello@example.com' } = $props();
+  let { workerUrl, recipientEmail = 'hello@example.com', senderEmail = 'noreply@example.com' } = $props();
 
   let name = $state('');
   let email = $state('');
@@ -22,7 +22,7 @@
   $effect(() => {
     if (typeof window === 'undefined' || !turnstileContainer) return;
     let script: HTMLScriptElement | null = null;
-    const sitekey = '1x00000000000000000000AA'; // test key
+    const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
 
     function init() {
       if (!window.turnstile || !turnstileContainer) return;
@@ -80,7 +80,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: recipientEmail,
-          from: 'kontakt@unityservice.ovh',
+          from: senderEmail,
           subject: `New message from ${name}`,
           text: `From: ${name} <${email}>\n\n${message}`,
           replyTo: email,

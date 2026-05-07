@@ -6,5 +6,5 @@ export const SITE_DESCRIPTION = 'Free Astro 6 starter with Svelte 5, Tailwind v4
 
 export const CONTACT = {
 	github: 'https://github.com/baflow/baselayer',
-	email: 'mailto:greg@unityservice.ovh',
+	email: 'mailto:hello@example.com',
 } as const;

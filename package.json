@@ -40,7 +40,10 @@
     "deploy:prod": "astro build && wrangler pages deploy ./dist --project-name=baselayer --branch=main",
     "astro": "astro",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "email:dev": "sh scripts/email-worker.sh dev",
+    "email:deploy": "sh scripts/email-worker.sh deploy",
+    "email:test": "sh scripts/email-worker.sh test"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.3.0",

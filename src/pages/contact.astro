@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ui/ContactForm.svelte';
 
-const WORKER_URL = 'https://email-cloudflare-resend.rapatatui.workers.dev/send';
-const RECIPIENT = 'rapatatui@gmail.com';
+const WORKER_URL = import.meta.env.EMAIL_WORKER_URL ?? '';
+const RECIPIENT = import.meta.env.EMAIL_RECIPIENT ?? 'hello@example.com';
+const SENDER = import.meta.env.EMAIL_SENDER ?? 'noreply@example.com';
 ---
 
 <BaseLayout title="Contact — Baselayer">
@@ -11,6 +12,7 @@ const RECIPIENT = 'rapatatui@gmail.com';
 		<ContactForm
 			workerUrl={WORKER_URL}
 			recipientEmail={RECIPIENT}
+			senderEmail={SENDER}
 			client:load
 		/>
 	</main>
