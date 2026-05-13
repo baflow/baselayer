@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "basecoat-css";
+@plugin "fluid-tailwindcss" {
+  minviewport: 320;
+  maxviewport: 1440;
+  checkaccessibility: true;
+}
 
 @theme inline {
     /* Fonts: map Astro-loaded font variables into Tailwind font utilities */
@@ -70,7 +75,7 @@
     --text-9xl--line-height: 1.5;
 
     /* Custom tokens mapped from DESIGN.md */
-    --text-display-lg: clamp(2.333rem, 2.04rem + 1.4657vi, 3.359rem); /* 4xl→6xl fluid */
+    --text-display-lg: 3rem; /* 48px — preserved from design spec */
     --text-display-lg--line-height: 1;
     --text-display-lg--letter-spacing: -0.025em;
 
@@ -165,37 +170,26 @@
         @apply font-display font-semibold text-lg;
     }
 
-    h1, .fs-h1 {
-        @apply font-[450] font-display text-text-secondary leading-tight;
-        font-size: clamp(2.8125rem, 2.6527rem + 0.6392vi, 3.1641rem);
+    h1 {
+        @apply font-[450] font-display text-text-secondary leading-tight text-4xl;
     }
 
-    h2, .fs-h2 {
-        @apply font-display font-light text-text-secondary leading-snug tracking-normal;
-        font-size: clamp(2.1094rem, 1.9895rem + 0.4794vi, 2.373rem);
+    h2 {
+        @apply font-display font-light text-text-secondary leading-snug tracking-normal text-3xl;
     }
 
-    h3, .fs-h3 {
-        @apply font-display font-light text-text-secondary leading-normal;
-        font-size: clamp(1.7578rem, 1.6579rem + 0.3995vi, 1.9775rem);
+    h3 {
+        @apply font-display font-light text-text-secondary leading-normal text-2xl;
     }
 
-    h4, .fs-h4 {
-        @apply font-display font-light text-text-secondary leading-normal;
-        font-size: clamp(1.4063rem, 1.3263rem + 0.3196vi, 1.582rem);
+    h4 {
+        @apply font-display font-light text-text-secondary leading-normal text-xl;
     }
 
-    h5, .fs-h5 {
-        @apply font-sans font-medium text-text-primary leading-snug;
-        font-size: clamp(1.1719rem, 1.1053rem + 0.2663vi, 1.3184rem);
-    }
-
-    h6, .fs-h6 {
-        @apply font-sans font-medium text-text-primary leading-snug;
-        font-size: clamp(1.0547rem, 0.9948rem + 0.2397vi, 1.1865rem);
+    h5 {
+        @apply font-sans font-medium text-text-primary leading-snug text-lg;
     }
 }
-
 .subtitles {
     letter-spacing: 0.12em;
 }
@@ -203,20 +197,17 @@
 /* ── Prose content styles ─────────────────────────── */
 @layer base {
     .prose {
-        @apply font-[350] text-text-primary leading-6;
-        font-size: clamp(1.125rem, 1rem + 0.625vi, 1.35rem);
+        @apply font-[350] text-lg text-text-primary leading-6;
     }
     .prose-lead {
         @apply font-[350] font-sans text-text-primary/80 leading-relaxed;
         font-size: clamp(1.125rem, 1rem + 0.625vi, 1.35rem);
     }
     .prose h2 {
-        @apply mt-10 mb-4 font-[420] font-display text-text-secondary leading-snug tracking-normal;
-        font-size: clamp(2.1094rem, 1.9895rem + 0.4794vi, 2.373rem);
+        @apply mt-10 mb-4 font-[420] font-display text-text-secondary text-3xl leading-snug tracking-normal;
     }
     .prose h3 {
-        @apply mt-8 mb-3 font-[350] font-display text-text-secondary leading-normal;
-        font-size: clamp(1.7578rem, 1.6579rem + 0.3995vi, 1.9775rem);
+        @apply mt-8 mb-3 font-[350] font-display text-text-secondary text-2xl leading-normal;
     }
     .prose p {
         @apply mb-4;

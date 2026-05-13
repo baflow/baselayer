@@ -39,17 +39,17 @@
             >
                 {subtitle}
             </span>
-            <h1 class="mb-4 font-[350]">
+            <h1 class="mb-4 font-[350] fl-text-6xl/7xl">
                 {heading}
                 <span class="font-light italic">{headingItalic}</span>
                 and exploring
                 <span class="text-primary">{headingHighlight}</span>.
             </h1>
-            <div class="space-y-4 tracking-[0.013em]">
-                <p class="text-white/88 text-xl text-pretty leading-relaxed" >
+            <div class="space-y-4 fl-text-2xl/3xl tracking-[0.013em]">
+                <p class="text-white/88 text-pretty fl-leading-8.5/9" >
                     {description}
                 </p>
-                <p class="text-text-primary/80 text-base tracking-wide" >
+                <p class="text-text-primary/80 fl-text-xl/2xl fl-leading-8/9.5 tracking-wide" >
                     {descriptionSecondary}
                 </p>
             </div>
