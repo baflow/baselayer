@@ -20,7 +20,7 @@
         heading = "I ship",
         headingItalic = "clean systems",
         headingHighlight = "fast",
-        description = "Templates, components, and front-end experiments. I optimize for clarity — less boilerplate, more logic. This is my open workbench.",
+        description = "Templates, components, and front-end experiments. I optimize for clarity - less boilerplate, more logic. This is my open workbench.",
         descriptionSecondary = "Everything here is free to fork or steal. Check the lab for the latest builds.",
         labHref = "/lab",
         blogHref = "/blog",
@@ -39,17 +39,17 @@
             >
                 {subtitle}
             </span>
-            <h1 class="mb-4 font-[350] fl-text-6xl/7xl">
+            <h1 class="mb-4 font-[350]">
                 {heading}
                 <span class="font-light italic">{headingItalic}</span>
                 and exploring
                 <span class="text-primary">{headingHighlight}</span>.
             </h1>
-            <div class="space-y-4 fl-text-2xl/3xl tracking-[0.013em]">
-                <p class="text-white/88 text-pretty fl-leading-8.5/9" >
+            <div class="space-y-4 tracking-[0.013em]">
+                <p class="text-white/88 text-xl text-pretty leading-relaxed" >
                     {description}
                 </p>
-                <p class="text-text-primary/80 fl-text-xl/2xl fl-leading-8/9.5 tracking-wide" >
+                <p class="text-text-primary/80 text-base tracking-wide" >
                     {descriptionSecondary}
                 </p>
             </div>

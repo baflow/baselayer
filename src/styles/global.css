@@ -1,10 +1,5 @@
 @import "tailwindcss";
 @import "basecoat-css";
-@plugin "fluid-tailwindcss" {
-  minviewport: 320;
-  maxviewport: 1440;
-  checkaccessibility: true;
-}
 
 @theme inline {
     /* Fonts: map Astro-loaded font variables into Tailwind font utilities */
@@ -75,7 +70,7 @@
     --text-9xl--line-height: 1.5;
 
     /* Custom tokens mapped from DESIGN.md */
-    --text-display-lg: 3rem; /* 48px — preserved from design spec */
+    --text-display-lg: clamp(2.333rem, 2.04rem + 1.4657vi, 3.359rem); /* 4xl→6xl fluid */
     --text-display-lg--line-height: 1;
     --text-display-lg--letter-spacing: -0.025em;
 
